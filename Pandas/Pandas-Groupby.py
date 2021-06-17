@@ -21,7 +21,9 @@ df.groupby('Company').sum()     #Other methods (sum, st. dev, count)
 df.groupby('Company').std()     #Numeric methods will omit strings
 df.groupby('Company').count()   #Count will return the # of instances (numeric or string)
 
-df.groupby('Company').max()
+df.groupby('Company').idxmax()  #Return the index number of the max value of that column
+
+df.groupby('Company').max()     #Return the max value of that column
 df.groupby('Company').min()
 #Beware! Max/min will return the corresp. value in each colum (if it's a string will be alphabetical)
 #The string and # value may not correspond or be correlated (only returns min, does not respect to who correspond that value)
