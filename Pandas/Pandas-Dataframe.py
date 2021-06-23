@@ -24,6 +24,10 @@ df.W
 df.loc['C']    #Select only 1 row, based on the name. Returns a series
 df.iloc[2]     #Select the row based on the # index. Same return.
 
+df['X'].argmax()  #NP Method(need to declare before the column/array). Returns the index of the max argument in that column
+
+
+
 #EXTRACT/SELECT SUBSETS OF DATA
 df.loc['B','Y']              #Select only 1 data
 

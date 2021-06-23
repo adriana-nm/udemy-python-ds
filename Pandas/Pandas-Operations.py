@@ -6,7 +6,7 @@ df = pd.DataFrame({'col1':[1,2,3,4],
                    'col2':[444,555,666,444],
                    'col3':['abc','def','ghi','xyz']})
 
-print(df.head())    #Function head: You get the first n rows (default n=5)
+print(df.head())    #Function head: You get the first n rows. Put inside the parenthesis the n rows. Default n=5
 
 #MAIN METHODS TO FIND UNIQUE VALUES
 
