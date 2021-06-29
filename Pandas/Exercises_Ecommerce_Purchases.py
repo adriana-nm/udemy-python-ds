@@ -1,6 +1,9 @@
 import numpy as np
 import pandas as pd
 
+#NOTE: SETTING OPTION TO SHOW ALL COLUMNS WITH HEAD METHOD (ONLY USE WHEN YOU START THE SESSION)
+pd.options.display.max_columns = None
+
 ecom = pd.read_csv(r"C:\Users\adri_\Desktop\Data Science\UDEMY - Python for Data Science and ML Bootcamp\Refactored_Py_DS_ML_Bootcamp-master\04-Pandas-Exercises\Ecommerce_Purchases.csv")
 print(ecom)
 
@@ -13,7 +16,8 @@ ecom.dtypes
 # #Colums and Rows
 ecom.shape
 ecom.info()
-ecom.columns
+len(ecom.columns)
+len(ecom.index)
 
 # Average Purchase Price
 ecom['Purchase Price'].mean()
@@ -69,6 +73,15 @@ ecom[ecom['Credit Card'] == 4926535242672853]['Email']
     ecom['year'] = ecom['CC Exp Date'].str.slice(start=-2)
     ecom[ecom['year']=='25'].shape[0]
 
+    #B)
+    ecom[ecom['CC Exp Date'].str.extract(r'/(\d+)', expand=False)=='25'].shape[0]
+    #Expand=False, return a Series (need a serie because I have a boolean condition to count)
+
+    #Other form to get the result of a boolean series
+    x = ecom['CC Exp Date'].str.extract(r'/(\d+)')=='25'
+    x[x.columns[0]]                                       #Select 1st row as series (boolean series)
+    ecom[x[x.columns[0]]].shape[0]
+
 
 # 5 Most popular email providers/host
-
+    ecom.groupby(ecom['Email'].str.extract(r'@(\S+)', expand=False)).count().sort_values(by='Address',axis=0,ascending=False).head(5).filter(['Email'])
