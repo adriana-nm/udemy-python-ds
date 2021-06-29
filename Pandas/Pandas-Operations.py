@@ -16,7 +16,8 @@ len(df['col2'].unique())
 df['col2'].nunique()    #Nunique: # of unique values
 
 df['col2'].value_counts()   #Value_counts: How many times each unique value appears
-
+                            #Get a series containing counts of unique values in descending order (most frequently first)
+                            #This function excludes NA values by default.
 #SELECTING DATA
 
 df[(df['col1']>2) & (df['col2']==444)]

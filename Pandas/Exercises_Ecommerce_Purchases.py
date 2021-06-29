@@ -31,15 +31,27 @@ ecom['Purchase Price'].max()
     sum(ecom[ecom['Language']=='en'].value_counts())
 
     #B)
+    ecom[ecom['Language']=='en']['Language'].count()
+
+    #C)
     ecom.groupby('Language').count().query('Language == "en"')
 
 
 # #People has job title "Lawyer"
-sum(ecom[ecom['Job']=='Lawyer'].value_counts())
+    #Several methods:
+    sum(ecom[ecom['Job']=='Lawyer'].value_counts())
+    ecom[ecom['Job']=='Lawyer'].info()
+    ecom[ecom['Job']=='Lawyer'].count()
+    len(ecom[ecom['Job']=='Lawyer'].index)
 
 # #People made purchase during AM / #People purchase PM
-sum(ecom[ecom['AM or PM']=='AM'].value_counts())
-sum(ecom[ecom['AM or PM']=='PM'].value_counts())
+    #A)
+    ecom['AM or PM'].value_counts()
+
+    #B)
+    sum(ecom[ecom['AM or PM']=='AM'].value_counts())
+    sum(ecom[ecom['AM or PM']=='PM'].value_counts())
+
 
 # 5 Most common Job Titles
     #A)
@@ -73,7 +85,7 @@ ecom[ecom['Credit Card'] == 4926535242672853]['Email']
     ecom['year'] = ecom['CC Exp Date'].str.slice(start=-2)
     ecom[ecom['year']=='25'].shape[0]
 
-    #B)
+    #B) str.extract
     ecom[ecom['CC Exp Date'].str.extract(r'/(\d+)', expand=False)=='25'].shape[0]
     #Expand=False, return a Series (need a serie because I have a boolean condition to count)
 
@@ -82,6 +94,13 @@ ecom[ecom['Credit Card'] == 4926535242672853]['Email']
     x[x.columns[0]]                                       #Select 1st row as series (boolean series)
     ecom[x[x.columns[0]]].shape[0]
 
+    #C) Using Lambdas
+    sum(ecom['CC Exp Date'].apply(lambda exp: exp[3:]=='25'))
+    ecom[ecom['CC Exp Date'].apply(lambda exp: exp[3:]=='25')].count()
 
 # 5 Most popular email providers/host
+    #A) With extract
     ecom.groupby(ecom['Email'].str.extract(r'@(\S+)', expand=False)).count().sort_values(by='Address',axis=0,ascending=False).head(5).filter(['Email'])
+
+    #B) With lambdas
+    ecom['Email'].apply(lambda email: email.split('@')[1]).value_counts().head()
