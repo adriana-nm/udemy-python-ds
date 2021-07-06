@@ -64,8 +64,15 @@ fig,axes = plt.subplots(nrows=3, ncols=3) #Returns 9 plots
 plt.tight_layout()          #Separates the plots, so they don't overlap
 
     # Axes is an array of matplotlib.axes, is a list of axes, so you can itirate throw the axes
-    fig,axes = plt.subplots(nrows=1, ncols=4)
+    fig,axes = plt.subplots(nrows=4, ncols=1)
     for current_ax in axes:
+        current_ax.plot(x,y)
+
+    #If row & column > 1, then need to use "axes.flat" (or it wont plot anything)
+    # [[1,2,3],[4,5,6]] Array of axes before FLAT
+    # [1,2,3,4,5,6] Array of axes after FLAT
+    fig,axes = plt.subplots(nrows=4, ncols=3)
+    for current_ax in axes.flat:
         current_ax.plot(x,y)
 
     #Or we can index each axes
@@ -115,4 +122,3 @@ ax.legend()     #It reference the label I create in each plot
     ax.legend(loc=0)
     #If non of the options are good, then you can specify a 2-tuple (x, y) places the corner of the legend specified by loc at x, y.
     ax.legend(loc=(0.1,0.1))
-
