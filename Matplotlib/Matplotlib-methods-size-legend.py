@@ -60,6 +60,7 @@ axes2.set_title('SMALLER PLOT')
 #OO #2  (Create a subplot, only 1 step to create the axes)
     #fig,axes = allow to create the canvas and the axes together
     #nrows=number of plots in rows, ncols =number of plots in columns
+    #You can avoid the text "nrow" & "ncols", and just put the numbers. Ex. (3,3)
 fig,axes = plt.subplots(nrows=3, ncols=3) #Returns 9 plots
 plt.tight_layout()          #Separates the plots, so they don't overlap
 
