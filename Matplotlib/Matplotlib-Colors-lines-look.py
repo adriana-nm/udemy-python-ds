@@ -21,6 +21,11 @@ fig = plt.figure()
 ax = fig.add_axes([0.1,0.1,0.8,0.8])
 ax.plot(x,y,color='purple',linewidth=3, alpha=0.5) #Default=1. Reduce the alpha to increase transparency.
 
+#LINE COLOR (ec=) (edgecolor)
+import pandas as pd
+df1 = pd.read_csv(r"C:\Users\adri_\Desktop\Data Science\UDEMY - Python for Data Science and ML Bootcamp\Refactored_Py_DS_ML_Bootcamp-master\07-Pandas-Built-in-Data-Viz\df1")
+df1['A'].hist(linewidth=1,ec='white')
+
 #LINE STYLE (Dashes, dot) (linestyle='' OR ls='')
 fig = plt.figure()
 ax = fig.add_axes([0.1,0.1,0.8,0.8])

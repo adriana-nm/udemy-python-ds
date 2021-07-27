@@ -44,8 +44,9 @@ df2['a'].plot.kde()                                     #KDE line plot
 df2['a'].plot.density()                                 #KDE line plot
 
 #Style of the functions
-#Options of style: 'ggplot', 'fivethirtyeight', 'dark_background', 'bmh'
-plt.style.use('ggplot')
+#Options of style: 'default','ggplot', 'fivethirtyeight', 'dark_background', 'bmh'
+#More options: https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html
+plt.style.use('default')
 df1['A'].hist(linewidth=1,ec='white')
 
 #Take legend outside the plot
